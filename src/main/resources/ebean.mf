@@ -1,0 +1,3 @@
+entity-packages: com.lostVictories.gameManager.model
+transactional-packages: com.lostVictories.gameManager
+querybean-packages: com.lostVictories.gameManager
