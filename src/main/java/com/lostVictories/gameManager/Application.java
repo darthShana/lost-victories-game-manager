@@ -42,27 +42,27 @@ public class Application {
         context.addEventListener(new DIServletContextListener(injector));
         context.addFilter(GuiceFilter.class, "/rest/*", EnumSet.of(javax.servlet.DispatcherType.REQUEST, javax.servlet.DispatcherType.ASYNC));
 
-        context.addServlet(new ServletHolder(injector.getInstance(LoginServlet.class)), "/login");
-        context.addServlet(new ServletHolder(injector.getInstance(CreateUserServlet.class)), "/createUser");
-
-        Constraint constraint = new Constraint();
-        constraint.setName(Constraint.__FORM_AUTH);
-        constraint.setRoles(new String[]{"user"});
-        constraint.setAuthenticate(true);
-
-        ConstraintMapping constraintMapping = new ConstraintMapping();
-        constraintMapping.setConstraint(constraint);
-        constraintMapping.setPathSpec("/rest/*");
-
-        ConstraintSecurityHandler securityHandler = new ConstraintSecurityHandler();
-        securityHandler.addConstraintMapping(constraintMapping);
-
-        securityHandler.setLoginService(injector.getInstance(GameLoginService.class));
-
-        FormAuthenticator authenticator = new FormAuthenticator("/login", "/login", false);
-        securityHandler.setAuthenticator(authenticator);
-
-        context.setSecurityHandler(securityHandler);
+//        context.addServlet(new ServletHolder(injector.getInstance(LoginServlet.class)), "/login");
+//        context.addServlet(new ServletHolder(injector.getInstance(CreateUserServlet.class)), "/createUser");
+//
+//        Constraint constraint = new Constraint();
+//        constraint.setName(Constraint.__FORM_AUTH);
+//        constraint.setRoles(new String[]{"user"});
+//        constraint.setAuthenticate(true);
+//
+//        ConstraintMapping constraintMapping = new ConstraintMapping();
+//        constraintMapping.setConstraint(constraint);
+//        constraintMapping.setPathSpec("/rest/*");
+//
+//        ConstraintSecurityHandler securityHandler = new ConstraintSecurityHandler();
+//        securityHandler.addConstraintMapping(constraintMapping);
+//
+//        securityHandler.setLoginService(injector.getInstance(GameLoginService.class));
+//
+//        FormAuthenticator authenticator = new FormAuthenticator("/login", "/login", false);
+//        securityHandler.setAuthenticator(authenticator);
+//
+//        context.setSecurityHandler(securityHandler);
 
         try {
             jettyServer.start();

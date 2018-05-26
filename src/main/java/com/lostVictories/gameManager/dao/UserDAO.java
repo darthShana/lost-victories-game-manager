@@ -22,4 +22,7 @@ public class UserDAO {
         user.save();
     }
 
+    public User getByID(UUID id) {
+        return new QUser().id.eq(id).findOne();
+    }
 }
